@@ -53,10 +53,11 @@ export const App = () => {
       toast('Please enter something')
       return
     }
-  
-    setSearchQuery(value)
+    if (value === searchQuery && page === 1) return
     setPage(1)
     setImages([])
+    setSearchQuery(value)
+    
   }
 
   const onNextPage = () => {

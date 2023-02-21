@@ -10,14 +10,17 @@ const modalRoot =  document.querySelector('#modal-root')
 export const Modal = ({image, tags, onClose}) => {
 
     useEffect(() => {
+        const handleEscapePress = (e) => {
+            if (e.code === 'Escape') {
+                onClose()
+            }
+        }
         window.addEventListener('keydown', handleEscapePress)
 
         return () => { window.removeEventListener('keydown', handleEscapePress) }
-    }, [])
+    }, [onClose])
 
-    const handleEscapePress = (e) => {
-        if (e.code === 'Escape') onClose()
-    }
+ 
 
     const handleOverlayClick = (e) => {
         if (e.target === e.currentTarget) onClose()
